@@ -15,7 +15,7 @@ public class User {
     @Column(name = "lastname")
     private String lastname;
 
-    @Column(name = "accountId")
+    @Column(name = "account_id")
     private Long accountId;
 
     public User(){
@@ -28,8 +28,8 @@ public class User {
         this.accountId = accountId;
     }
 
-    public int getId() { return id; }
-    public void setId() { this.id = id; }
+    //public int getId() { return id; }
+    //public void setId() { this.id = id; }
 
     public String getFirstname(){ return firstname; }
     public void setFirstname() { this.firstname = firstname; }
