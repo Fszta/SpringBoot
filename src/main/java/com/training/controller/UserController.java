@@ -39,4 +39,14 @@ public class UserController {
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
+
+    @PostMapping("/user/{id}")
+    public ResponseEntity<User> addUser(@RequestBody User user) {
+        try {
+            User _user = userRepository.save(new User(user.getFirstname(),user.getLastname(),user.getAccountId()));
+            return new ResponseEntity<>(_user, HttpStatus.CREATED);
+        } catch (Exception e) {
+            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
 }
