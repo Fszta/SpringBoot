@@ -4,5 +4,5 @@ CREATE TABLE USER (
     id INT AUTO_INCREMENT PRIMARY KEY,
     firstname VARCHAR(250) NOT NULL,
     lastname VARCHAR(250) NOT NULL,
-    accountId BIGINT NOT NULL
+    accountid BIGINT NOT NULL
 );
