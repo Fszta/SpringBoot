@@ -23,12 +23,13 @@ public class UserController {
             User user = userRepository.findByAccountId(accountId);
             return new ResponseEntity<>(user, HttpStatus.OK);
         } catch (Exception e) {
+            System.out.println(e);
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 
     @GetMapping("/users")
-    public ResponseEntity<List<User>> getAllUsers(){
+    public ResponseEntity<List<User>> getAllUsers() {
         try {
             List<User> users = new ArrayList<>();
             System.out.println(userRepository.findAll());
@@ -40,13 +41,24 @@ public class UserController {
         }
     }
 
-    @PostMapping("/user/{id}")
+    @PostMapping("/user/")
     public ResponseEntity<User> addUser(@RequestBody User user) {
         try {
-            User _user = userRepository.save(new User(user.getFirstname(),user.getLastname(),user.getAccountId()));
+            User _user = userRepository.save(new User(user.getFirstname(), user.getLastname(), user.getAccountId()));
             return new ResponseEntity<>(_user, HttpStatus.CREATED);
         } catch (Exception e) {
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    @DeleteMapping("/user/{id}")
+    public ResponseEntity<User> deleteUser(@PathVariable("id") int id) {
+        try {
+            userRepository.deleteById(id);
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        } catch (Exception e) {
+            System.out.println(e);
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 }
