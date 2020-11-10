@@ -28,8 +28,7 @@ public class User {
         this.accountId = accountId;
     }
 
-    //public int getId() { return id; }
-    //public void setId() { this.id = id; }
+    public void setId() { this.id = id; }
 
     public String getFirstname(){ return firstname; }
     public void setFirstname() { this.firstname = firstname; }
