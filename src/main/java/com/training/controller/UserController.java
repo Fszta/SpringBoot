@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 
 @RestController
@@ -59,6 +60,21 @@ public class UserController {
         } catch (Exception e) {
             System.out.println(e);
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    @PutMapping("/user/{id}")
+    public ResponseEntity<User> updateUser(@PathVariable("id") int id, @RequestBody User user) {
+        Optional<User> userData = userRepository.findById(id);
+
+        if(userData.isPresent()){
+            User _user = userData.get();
+            _user.setFirstname(user.getFirstname());
+            _user.setLastname(user.getLastname());
+            _user.setAccountId(user.getAccountId());
+            return new ResponseEntity<>(userRepository.save(_user),HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
 }
