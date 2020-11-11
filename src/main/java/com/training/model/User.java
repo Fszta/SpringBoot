@@ -31,13 +31,13 @@ public class User {
     public void setId() { this.id = id; }
 
     public String getFirstname(){ return firstname; }
-    public void setFirstname() { this.firstname = firstname; }
+    public void setFirstname(String firstname) { this.firstname = firstname; }
 
     public String getLastname(){ return lastname; }
-    public void setLastname(){ this.lastname = lastname; }
+    public void setLastname(String lastname){ this.lastname = lastname; }
 
     public Long getAccountId(){ return accountId; }
-    public void setAccountId(){ this.accountId = accountId; }
+    public void setAccountId(long accountId){ this.accountId = accountId; }
 
 
 }
