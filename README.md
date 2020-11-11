@@ -18,3 +18,8 @@ docker run -d -p 8080:8080 spring-api
 ## Swagger documentation
 * Accessible at : http://localhost:8080/swagger-ui.html
 
+
+<p align="center">
+  <img src="screen/swagger.png" title="swagger-ui">
+</p>
+
